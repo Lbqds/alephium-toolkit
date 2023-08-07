@@ -5,14 +5,14 @@ import CopyText from '../Misc/CopyText';
 import { useEffect } from 'react';
 
 function WalletInfo() {
-  const account = useAccount();
-  const { balance, updateBalanceForTx } = useBalance();
+  const account = useAccount()
+  const { balance, updateBalanceForTx } = useBalance()
 
-  console.log(`==== `, balance)
+  console.log(`==== `, account?.address, balance)
 
   useEffect(() => {
     console.log(`===== useEffect`)
-    // updateBalanceForTx("fe9ede54e19411ccdbaaa620e1249fffeeb494266c26d2a9d1e6e6aec16d0bfe")
+    updateBalanceForTx("fe9ede54e19411ccdbaaa620e1249fffeeb494266c26d2a9d1e6e6aec16d0bfe")
   })
 
   return (
