@@ -1,18 +1,23 @@
-import { useAccount, useBalance } from '@alephium/web3-react';
+import { useAlephiumBalanceContext, useBalance, useWallet } from '@alephium/web3-react';
 import {  Center, rem } from '@mantine/core';
 import MyTable from '../Misc/MyTable';
 import CopyText from '../Misc/CopyText';
 import { useEffect } from 'react';
 
 function WalletInfo() {
-  const account = useAccount();
+  const wallet = useWallet();
   const { balance, updateBalanceForTx } = useBalance();
 
-  console.log(`==== `, balance)
+  const account = wallet !== undefined ? wallet.account : undefined
+  console.log(`==== `, balance, account?.address)
 
   useEffect(() => {
     console.log(`===== useEffect`)
-    // updateBalanceForTx("fe9ede54e19411ccdbaaa620e1249fffeeb494266c26d2a9d1e6e6aec16d0bfe")
+    try {
+      updateBalanceForTx("fe9ede54e19411ccdbaaa620e1249fffeeb494266c26d2a9d1e6e6aec16d0bfe")
+    } catch (error) {
+      console.log(error)
+    }
   })
 
   return (
